@@ -3,16 +3,37 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Globo con Cargas Reales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador: Inducción Electrostática</title>
   <link rel="stylesheet" href="/proyecto/home/estilos.css">
 </head>
 
 <body>
 
-  <h2>⚡ Globo con Cargas Reales ⚡</h2>
-  <p>El globo se carga por inducción y atrae o repele partículas</p>
+  <div class="interface-container">
+    <h1>Interacción Electrostática</h1>
 
-  <canvas id="canvas" width="700" height="500"></canvas>
+    <div class="control-panel">
+      <div class="control-group">
+        <p style="margin: 0; color: #94a3b8; font-size: 0.9rem; text-align: left;">
+          <strong style="color: #00d4ff;">Experimento de Inducción:</strong><br>
+          Mueve el globo para observar cómo se redistribuyen las cargas
+          en el objeto cercano y cómo se genera la fuerza de atracción.
+        </p>
+      </div>
+      <div class="control-group">
+        <button onclick="location.reload()">REINICIAR EXPERIMENTO</button>
+      </div>
+    </div>
+
+    <canvas id="canvas" width="700" height="500"></canvas>
+
+    <div class="stats-display">
+      <p>Fenómeno: <span class="data-value">Polarización</span></p>
+      <p>Fuerza: <span class="data-value">Coulombiana</span></p>
+      <p>Carga: <span class="data-value">Neta Variable</span></p>
+    </div>
+  </div>
 
   <script src="/proyecto/script/scriptGlobo.js"></script>
 </body>

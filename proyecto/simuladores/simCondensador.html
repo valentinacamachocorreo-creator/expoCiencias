@@ -8,27 +8,24 @@
 </head>
 
 <body id="Condensador">
-    <div class="interface.Condensador">
-        <h1>Capacidad de un Condensador</h1>
-
-        <div class="control-panel">
-            <div class="control-group">
-                <label>Distancia entre placas ($d$):</label>
-                <input type="range" id="distRange" min="30" max="150" value="80">
-            </div>
-            <div class="control-group">
-                <label>Área de las placas ($A$):</label>
-                <input type="range" id="areaRange" min="50" max="250" value="150">
-            </div>
+    <div class="interface-container">
+    <h1>Condensador de Placas</h1>
+    <div class="control-panel">
+        <div class="control-group">
+            <label>Distancia (d)</label>
+            <input type="range" id="distRange" min="30" max="150">
         </div>
-
-        <canvas id="capCanvas"></canvas>
-
-        <div class="stats">
-            <p>Capacitancia ($C$): <span id="cVal">0</span> pF</p>
-            <p>Energía Almacenada ($U$): <span id="uVal">0</span> J</p>
+        <div class="control-group">
+            <label>Área (A)</label>
+            <input type="range" id="areaRange" min="50" max="250">
         </div>
     </div>
+    <canvas id="capCanvas"></canvas>
+    <div class="stats-display">
+        <p>Capacitancia: <span id="cVal" class="data-value">0</span> pF</p>
+        <p>Energía: <span id="uVal" class="data-value">0</span> J</p>
+    </div>
+</div>
     <script src="/proyecto/script/scriptCondensador.js"></script>
 </body>
 

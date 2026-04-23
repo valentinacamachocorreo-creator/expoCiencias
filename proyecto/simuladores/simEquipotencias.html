@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Potencial Eléctrico</title>
     <link rel="stylesheet" href="/proyecto/home/estilos.css">
 </head>
-<body id="cuerpo">
-    <div class="container">
+
+<body>
+
+    <div class="interface-container">
         <h1>Mapa de Potencial Eléctrico</h1>
+
         <canvas id="canvasPotencial"></canvas>
-        <div class="controls">
-            <p>Haz clic para colocar una carga positiva. Shift + Clic para negativa.</p>
-            <button onclick="clearCanvas()">Limpiar Simulador</button>
+
+        <div class="control-panel">
+            <div class="control-group">
+                <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">
+                    <strong style="color: #00d4ff;">Instrucciones:</strong><br>
+                    • Clic Izquierdo: Carga Positiva (+)<br>
+                    • Shift + Clic: Carga Negativa (-)
+                </p>
+            </div>
+
+            <div class="control-group">
+                <button onclick="clearCanvas()">LIMPIAR MAPA</button>
+            </div>
+        </div>
+
+        <div class="stats-display">
+            <p>Visualización: <span class="data-value">Campo Escalar V(x,y)</span></p>
+            <p>Precisión: <span class="data-value">Alta</span></p>
         </div>
     </div>
-      <script src="/proyecto/script/scriptEquipotencial.js"></script>
+
+    <script src="/proyecto/script/scriptEquipotencial.js"></script>
 </body>
+
 </html>
