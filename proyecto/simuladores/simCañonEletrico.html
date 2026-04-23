@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador: Acelerador de Partículas</title>
+    <link rel="stylesheet" href="/proyecto/home/estilos.css">
+</head>
+<body id="cañon">
+
+    <div class="interfac.cañon">
+        <h1>Acelerador Lineal de Partículas</h1>
+        
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="volts">Diferencia de Potencial ($\Delta V$):</label>
+                <input type="range" id="volts" min="10" max="200" value="100">
+                <span id="vDisplay">100</span> V
+            </div>
+            
+            <button id="btnLaunch">DISPARAR PROTÓN</button>
+            <button id="btnReset">REINICIAR</button>
+        </div>
+
+        <canvas id="canvasAcelerador"></canvas>
+
+        <div class="data-display">
+            <p>Energía Cinética final: <span id="energy">0</span> eV</p>
+            <p>Estado: <span id="status">Listo</span></p>
+        </div>
+    </div>
+
+    <script src="/proyecto/script/scriptCañonEletrico.js"></script>
+</body>
+</html>

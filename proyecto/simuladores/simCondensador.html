@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador: Condensador Eléctrico</title>
+    <link rel="stylesheet" href="/proyecto/home/estilos.css">
+</head>
+
+<body id="Condensador">
+    <div class="interface.Condensador">
+        <h1>Capacidad de un Condensador</h1>
+
+        <div class="control-panel">
+            <div class="control-group">
+                <label>Distancia entre placas ($d$):</label>
+                <input type="range" id="distRange" min="30" max="150" value="80">
+            </div>
+            <div class="control-group">
+                <label>Área de las placas ($A$):</label>
+                <input type="range" id="areaRange" min="50" max="250" value="150">
+            </div>
+        </div>
+
+        <canvas id="capCanvas"></canvas>
+
+        <div class="stats">
+            <p>Capacitancia ($C$): <span id="cVal">0</span> pF</p>
+            <p>Energía Almacenada ($U$): <span id="uVal">0</span> J</p>
+        </div>
+    </div>
+    <script src="/proyecto/script/scriptCondensador.js"></script>
+</body>
+
+</html>

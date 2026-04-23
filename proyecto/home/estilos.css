@@ -17,7 +17,7 @@
    margin: 10px;
  }
 
- .cuerpo {
+ *equipotencia* .cuerpo {
    background-color: #1a1a1a;
    color: white;
    font-family: sans-serif;
@@ -50,4 +50,121 @@
    border: none;
    border-radius: 5px;
    cursor: pointer;
+ }
+
+ *cañon*
+  .cañon {
+   background-color: #0a0a12;
+   color: #00d4ff;
+   font-family: 'Courier New', Courier, monospace;
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+   margin: 0;
+ }
+
+ .interface.cañon {
+   text-align: center;
+   max-width: 800px;
+   width: 100%;
+ }
+
+ h1 {
+   text-shadow: 0 0 10px #00d4ff;
+   font-size: 1.8rem;
+ }
+
+ /* Panel de controles */
+ .control-panel {
+   background: #161625;
+   padding: 20px;
+   border-radius: 12px;
+   border: 1px solid #00d4ff;
+   margin-bottom: 20px;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   flex-wrap: wrap;
+ }
+
+ .canvasAcelerador {
+   background: #000;
+   border: 2px solid #333;
+   border-radius: 8px;
+   box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+   width: 100%;
+   max-width: 700px;
+ }
+
+ .btnLaunch .btnReset {
+   background: #00d4ff;
+   color: #000;
+   border: none;
+   padding: 10px 20px;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+
+ .btnReset .btnLaunch:hover {
+   background: #ffffff;
+   box-shadow: 0 0 15px #ffffff;
+ }
+
+ input[type=range] {
+   cursor: pointer;
+   margin: 0 10px;
+ }
+
+ .data-display {
+   margin-top: 15px;
+   font-size: 1.1rem;
+   color: #00ff88;
+ }
+
+ *condensador* body {
+   background: #0f172a;
+   color: #f8fafc;
+   font-family: 'Segoe UI', sans-serif;
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+ }
+
+ .interface {
+   text-align: center;
+   background: #1e293b;
+   padding: 30px;
+   border-radius: 20px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+ }
+
+ .capCanvas {
+   background: #020617;
+   border-radius: 10px;
+   margin: 20px 0;
+   border: 1px solid #334155;
+ }
+
+ .control-panel {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 20px;
+   background: #334155;
+   padding: 15px;
+   border-radius: 10px;
+ }
+
+ .stats {
+   display: flex;
+   justify-content: space-around;
+   font-weight: bold;
+   color: #38bdf8;
+   font-size: 1.2rem;
+ }
+
+ input[type=range] {
+   width: 100%;
+   accent-color: #38bdf8;
  }
