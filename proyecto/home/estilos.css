@@ -1,18 +1,53 @@
  body {
-      margin: 0;
-      background: #020617;
-      color: white;
-      font-family: Arial;
-      text-align: center;
-    }
+   margin: 0;
+   background: #020617;
+   color: white;
+   font-family: Arial;
+   text-align: center;
+ }
 
-    canvas {
-      display: block;
-      margin: auto;
-      background: radial-gradient(circle, #0f172a, #000);
-      border: 1px solid #333;
-    }
+ canvas {
+   display: block;
+   margin: auto;
+   background: radial-gradient(circle, #0f172a, #000);
+   border: 1px solid #333;
+ }
 
-    h2 {
-      margin: 10px;
-    }
+ h2 {
+   margin: 10px;
+ }
+
+ .cuerpo {
+   background-color: #1a1a1a;
+   color: white;
+   font-family: sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+ }
+
+ .container {
+   text-align: center;
+ }
+
+ .canvasPotencial {
+   border: 2px solid #444;
+   background-color: #000;
+   cursor: crosshair;
+   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+ }
+
+ .controls {
+   margin-top: 15px;
+ }
+
+ button {
+   padding: 10px 20px;
+   background: #008cba;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+ }
