@@ -9,14 +9,29 @@
 </head>
 
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+   <img src="/proyecto/img/logoUnia.png.png" class="logo-uni" alt="logo universidad">
+    <span>voltspace</span>
+    </div>
+        <div class="nav-center">
+        <a href="../home/experimentos.html" class="btn-back">
+          ← Volver a experimentos
+         </a>
+        </div>
+      <div class="expo">
+        <img src="/proyecto/img/logoExpoCiencias.png.png" alt="expo ciencias">
+    </div>
+    </nav>
+  </header>
 
   <div class="interface-container">
     <h1>Interacción Electrostática</h1>
-
     <div class="control-panel">
       <div class="control-group">
         <p style="margin: 0; color: #94a3b8; font-size: 0.9rem; text-align: left;">
-          <strong style="color: #00d4ff;">Experimento de Inducción:</strong><br>
+          <strong style="color: white;">Experimento de Inducción:</strong><br>
           Mueve el globo para observar cómo se redistribuyen las cargas
           en el objeto cercano y cómo se genera la fuerza de atracción.
         </p>
@@ -29,10 +44,21 @@
     <canvas id="canvas" width="700" height="500"></canvas>
 
     <div class="stats-display">
-      <p>Fenómeno: <span class="data-value">Polarización</span></p>
-      <p>Fuerza: <span class="data-value">Coulombiana</span></p>
-      <p>Carga: <span class="data-value">Neta Variable</span></p>
-    </div>
+  <div class="stat-item">
+    <span class="stat-label">Fenómeno</span>
+    <span class="stat-value">Polarización</span>
+  </div>
+
+  <div class="stat-item">
+    <span class="stat-label">Fuerza</span>
+    <span class="stat-value">Coulombiana</span>
+  </div>
+
+  <div class="stat-item">
+    <span class="stat-label">Carga</span>
+    <span class="stat-value">Neta Variable</span>
+  </div>
+</div>
   </div>
 
   <script src="/proyecto/script/scriptGlobo.js"></script>
