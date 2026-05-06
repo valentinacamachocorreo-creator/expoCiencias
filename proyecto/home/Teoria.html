@@ -12,58 +12,132 @@
     <header>
         <nav class="navbar">
             <div class="logo">
+                <img src="/proyecto/img/logoUnia.png.png" class="logo-uni" alt="logo universidad">
                 <span>voltspace</span>
             </div>
+
             <ul class="menu">
-                <li><a href="Home.html" class="activo">Inicio</a></li>
-                <li><a href="experimentos.html">Experimentos</a></li>
+                <li><a href="Home.html">Inicio</a></li>
+                <li><a href="experimentos.html" class="activo">Experimentos</a></li>
                 <li><a href="Teoria.html">Teoria</a></li>
                 <li><a href="Equipo.html">Equipo</a></li>
             </ul>
+
+            <div class="expo">
+                <img src="/proyecto/img/logoExpoCiencias.png.png" alt="expo ciencias">
+            </div>
         </nav>
     </header>
-    <section class="info">
+    <section class="cards" id="empezar">
 
-        <div class="info-potencial ">
-            <h2>Interacciones eléctricas y polarización .</h2>
+        <div class="card ">
+            <h2>Potencial eléctrico.</h2>
             <p>
-                “Esta simulación muestra cómo un globo cargado genera un campo eléctrico que interactúa con cargas
-                positivas y negativas a su alrededor. Según la ley de Coulomb, las cargas opuestas se atraen y las
-                iguales se repelen, lo que explica el movimiento de las partículas. Además, se observa el fenómeno de
-                polarización, donde las cargas se redistribuyen debido a la influencia del campo eléctrico.”
-            </p>
-            <div>
-                <li><a href="/proyecto/simuladores/simGlobo.html">GloboCargado</a></li>
-            </div>
-            <h2>Disparo de Cargas .</h2>
-            <p>
-                En esta simulación vemos cómo una partícula cargada es acelerada por un campo eléctrico generado entre
-                dos placas. Al aumentar el voltaje, aumenta la energía de la partícula, lo que hace que se mueva más
-                rápido y llegue con mayor impacto al detector.
-            </p>
-            <div>
-                <li><a href="/proyecto/simuladores/simCañonEletrico.html">cañon eletrico</a></li>
-            </div>
-            <h2>condensador .</h2>
-            <p>
-                Este simulador muestra cómo un condensador almacena energía eléctrica entre dos placas. Al aumentar el
-                área de las placas, se puede almacenar más carga, y al disminuir la distancia entre ellas, la
-                capacitancia aumenta. Esto permite almacenar más energía en el sistema.
-            </p>
-            <div>
-                <li><a href="/proyecto/simuladores/simCondensador.html">condensador</a></li>
-            </div>
-            <h2>equipotecias .</h2>
-            <p>
-                Este simulador muestra cómo múltiples cargas eléctricas generan un campo de potencial. Cada carga
-                contribuye al sistema, y el resultado final es la suma de todos sus efectos. Los colores representan la
-                energía que tendría una carga en cada punto del espacio.
-            </p>
-            <div>
-                <li><a href="/proyecto/simuladores/simEquipotencias.html">equipotecias</a></li>
-            </div>
+                El potencial eléctrico es la energía que posee una carga en un punto del espacio debido a la presencia
+                de otras cargas. Es una magnitud escalar que no depende del camino recorrido, sino únicamente de la
+                posición. Permite analizar sistemas eléctricos de forma más sencilla sin estudiar cada fuerza
+                individual. En tu proyecto, este concepto es fundamental porque se representa directamente en el mapa de
+                colores y se transforma en movimiento y energía en los otros simuladores.
         </div>
 
+
+        <div class="card ">
+            <h2>Diferencia de potencial eléctrico.</h2>
+            <p>
+                La diferencia de potencial, también conocida como voltaje, indica cuánto cambia la energía de una carga
+                al moverse entre dos puntos. Es el factor que realmente provoca el desplazamiento de las cargas en un
+                sistema eléctrico. Sin esta diferencia no existiría movimiento ni transferencia de energía. En tu
+                simulador del acelerador y del condensador, el voltaje es lo que impulsa las partículas y determina
+                cuánta energía puede almacenarse.
+            </p>
+        </div>
+
+
+        <div class="card ">
+            <h2>Campo eléctrico.</h2>
+            <p>
+                El campo eléctrico es la región del espacio donde una carga experimenta una fuerza eléctrica, y se
+                representa como un vector con dirección y sentido. Este campo es el encargado de convertir la energía
+                potencial en movimiento real de las cargas. Siempre apunta desde zonas de mayor potencial hacia menor
+                potencial. En tu proyecto, el campo actúa en el acelerador moviendo la partícula y en el condensador
+                creando una zona uniforme entre placas.
+
+        </div>
+
+        <div class="card ">
+            <h2>Potencial de una carga puntual.</h2>
+            <p>
+                El potencial de una carga puntual describe cómo una sola carga influye en el espacio que la rodea,
+                generando un valor que disminuye con la distancia. Cuanto más cerca se esté de la carga, mayor será el
+                potencial, y cuanto más lejos, menor será su efecto. Este comportamiento permite entender la
+                distribución de energía en sistemas simples. En tu simulador de mapa, cada carga añadida genera este
+                tipo de distribución individual.
+
+        </div>
+
+        <div class="card ">
+            <h2>Superposición de campos eléctricos.</h2>
+            <p>
+                El principio de superposición establece que el potencial total en un punto es la suma de los potenciales
+                generados por cada carga presente. Esto facilita el análisis de sistemas complejos, ya que no es
+                necesario calcular todo desde cero. Cada carga contribuye de manera independiente al resultado final. En
+                tu mapa de potencial, este principio se observa claramente cuando varias cargas modifican los colores y
+                crean patrones combinados.
+
+        </div>
+
+        <div class="card ">
+            <h2>Energía potencial eléctrica.</h2>
+            <p>
+                La energía potencial eléctrica es la energía que posee una carga debido a su posición dentro de un campo
+                eléctrico. Esta energía puede almacenarse o transformarse en otras formas, como energía cinética.
+                Depende tanto del valor de la carga como del potencial del punto donde se encuentra. En tu proyecto,
+                esta energía se convierte en movimiento en el acelerador y se almacena en el condensador.
+        </div>
+
+        <div class="card ">
+            <h2>Superficie equipotencial.</h2>
+            <p>
+                Las superficies equipotenciales son regiones donde todos los puntos tienen el mismo valor de potencial
+                eléctrico. Al moverse dentro de estas superficies, no se realiza trabajo porque no hay cambio de
+                energía. Estas superficies siempre son perpendiculares al campo eléctrico. En tu simulador de mapa, los
+                colores iguales representan estas zonas, permitiendo visualizar este concepto de manera intuitiva.
+        </div>
+
+        <div class="card ">
+            <h2>Movimiento de cargas</h2>
+            <p>
+                El movimiento de cargas ocurre cuando existe una diferencia de potencial que genera una fuerza sobre
+                ellas. Las cargas positivas se desplazan hacia regiones de menor potencial, mientras que las negativas
+                lo hacen en sentido contrario. Este fenómeno es la base de la corriente eléctrica y muchos procesos
+                físicos. En tu simulador del acelerador y del globo, se observa claramente cómo las cargas se mueven o
+                interactúan.
+
+        </div>
+
+        <div class="card ">
+            <h2>Capacitancia eléctrica</h2>
+            <p>
+                La capacitancia es la capacidad de un sistema para almacenar carga eléctrica cuando existe una
+                diferencia de potencial. Depende de factores como el área de las placas y la distancia entre ellas.
+                También está relacionada con la cantidad de energía que puede almacenarse. En tu simulador del
+                condensador, este concepto se muestra al variar estos parámetros y observar cómo cambia la energía
+                almacenada.
+
+        </div>
+
+        <div class="card ">
+            <h2>Aplicaciones del potencial eléctrico.</h2>
+            <p>
+                El potencial eléctrico tiene aplicaciones en numerosos sistemas tecnológicos, como circuitos,
+                dispositivos electrónicos y almacenamiento de energía. Permite comprender cómo se transfiere y utiliza
+                la energía eléctrica en la vida cotidiana. También es fundamental en áreas como la física de partículas
+                y la ingeniería. En tu proyecto, todos los simuladores representan aplicaciones reales de estos
+                principios en diferentes contextos.
+        </div>
+
+
+    </section>
 </body>
 
 </html>
