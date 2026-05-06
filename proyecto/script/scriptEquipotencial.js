@@ -1,3 +1,6 @@
+const info = document.getElementById("infoPotencial");
+const num = document.getElementById("numCargas");
+
 const canvas = document.getElementById('canvasPotencial');
 const ctx = canvas.getContext('2d');
 canvas.width = 600;
@@ -19,8 +22,8 @@ class Charge {
 function drawPotential() {
     const imageData = ctx.createImageData(canvas.width, canvas.height);
 
-    for (let x = 0; x < canvas.width; x += 4) { // Saltamos píxeles para mejorar rendimiento
-        for (let y = 0; y < canvas.height; y += 4) {
+    for (let x = 0; x < canvas.width; x += 2) { // Saltamos píxeles para mejorar rendimiento
+        for (let y = 0; y < canvas.height; y += 2) {
             let totalV = 0;
 
             charges.forEach(c => {
@@ -32,10 +35,19 @@ function drawPotential() {
 
             // Colorear: Rojo para positivo, Azul para negativo
             let index = (x + y * canvas.width) * 4;
-            imageData.data[index] = totalV > 0 ? Math.min(totalV * 2, 255) : 0; // R
-            imageData.data[index + 1] = 0; // G
-            imageData.data[index + 2] = totalV < 0 ? Math.min(Math.abs(totalV) * 2, 255) : 0; // B
-            imageData.data[index + 3] = 255; // Alpha
+            const intensidad = Math.min(Math.abs(totalV) * 3, 255);
+
+if (totalV > 0) {
+    imageData.data[index] = intensidad;        // Rojo
+    imageData.data[index + 1] = intensidad * 0.3; // Naranja suave
+    imageData.data[index + 2] = 0;
+} else {
+    imageData.data[index] = 0;
+    imageData.data[index + 1] = intensidad * 0.3;
+    imageData.data[index + 2] = intensidad;    // Azul
+}
+
+imageData.data[index + 3] = 255; // Alpha
         }
     }
     ctx.putImageData(imageData, 0, 0);
@@ -54,16 +66,45 @@ canvas.addEventListener('mousedown', (e) => {
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPotential();
-    // Dibujar círculos donde están las cargas
+
     charges.forEach(c => {
-        ctx.fillStyle = c.q > 0 ? 'white' : 'yellow';
+        ctx.fillStyle = c.q > 0 ? '#ff4d4d' : '#3b82f6';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = ctx.fillStyle;
+        ctx.shadowBlur = 0;
         ctx.beginPath();
         ctx.arc(c.x, c.y, 5, 0, Math.PI * 2);
         ctx.fill();
     });
+
+    num.textContent = `Cargas: ${charges.length}`;
 }
 
 function clearCanvas() {
     charges = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    let totalV = 0;
+
+    charges.forEach(c => {
+        let dx = x - c.x;
+        let dy = y - c.y;
+        let r = Math.sqrt(dx * dx + dy * dy) + 10;
+        totalV += (K * c.q) / r;
+    });
+
+    info.textContent = `V = ${totalV.toFixed(2)}`;
+});
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace") {
+        charges.pop();
+        update();
+    }
+});

@@ -37,7 +37,7 @@ document.getElementById('btnReset').addEventListener('click', () => {
     particle.x = 50;
     particle.vx = 0;
     statusDisplay.innerText = "Listo";
-    energyDisplay.innerText = "0";
+    energyDisplay.innerText = "0 eV";
 });
 
 function update() {
@@ -52,6 +52,17 @@ function update() {
     ctx.fillStyle = "#4444ff"; // Placa Negativa (-)
     ctx.fillRect(250, 80, 15, 140);
 
+    // ⚡ Campo eléctrico entre placas
+ctx.strokeStyle = "rgba(0, 212, 255, 0.2)";
+ctx.lineWidth = 2;
+
+for (let y = 90; y < 210; y += 20) {
+    ctx.beginPath();
+    ctx.moveTo(85, y);
+    ctx.lineTo(250, y);
+    ctx.stroke();
+}
+
     // 3. Lógica de Física del Movimiento
     if (particle.active) {
         let v = parseInt(voltInput.value);
@@ -60,7 +71,8 @@ function update() {
         if (particle.x >= 70 && particle.x <= 250) {
             // Aceleramos la partícula proporcional al voltaje
             // Dividimos por 100 para que no sea tan brusco
-            particle.vx += (v / 150);
+            let aceleracion = v / 200;
+particle.vx += aceleracion;
             statusDisplay.innerText = "Acelerando...";
             statusDisplay.style.color = "#ffcc00";
         } else if (particle.x > 250) {
@@ -69,7 +81,7 @@ function update() {
             statusDisplay.style.color = "#00ff88";
             energyDisplay.innerText = (v * 1.6).toFixed(0); // Simulación de eV
         }
-
+        energyDisplay.innerText = (particle.vx * 50).toFixed(0) + " eV";
         // Mover la partícula según su velocidad actual
         particle.x += particle.vx;
 
@@ -81,12 +93,13 @@ function update() {
     }
 
     // 4. Dibujar el Protón con brillo
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#00d4ff";
-    ctx.fill();
+   ctx.beginPath();
+ctx.arc(particle.x - particle.vx * 2, particle.y, particle.radius, 0, Math.PI * 2);
+ctx.fillStyle = "rgba(0, 212, 255, 0.2)";
+ctx.fill();
     // Brillo alrededor de la partícula
-    ctx.shadowBlur = 15;
+    ctx.shadowBlur = 25;
+ctx.shadowColor = "#00d4ff";
     ctx.shadowColor = "#00d4ff";
     ctx.stroke();
     ctx.shadowBlur = 0;
