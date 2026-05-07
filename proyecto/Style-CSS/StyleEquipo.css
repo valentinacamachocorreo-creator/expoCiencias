@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ===== 2. BASE ===== */
@@ -103,39 +104,143 @@ header {
     border-radius: 10px;
 }
 
-/* =====5. CARDS ===== */
-.cards {
-    width: 90%;
-    margin: auto;
-    padding: 80px 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+/* ===== TITULO ===== */
+.titulo {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
+.titulo h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
 
+.titulo p {
+    color: #b8b8b8;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* ===== CONTENEDOR ===== */
+.equipo {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* ===== TARJETA ===== */
 .card {
-    background: rgba(255, 255, 255, 0.04);
+    width: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
     padding: 35px;
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: 0.35s ease;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    display: block;
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 0 20px rgba(132, 0, 255, 0.15);
+
+    transition: 0.4s;
 }
 
-.card h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
+/* ===== FOTO ===== */
+.foto {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    border: 4px solid #0A192F;
+    box-shadow: 0 0 25px #0A192F;
+
+    flex-shrink: 0;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== TEXTO ===== */
+.titulo h1 span {
     background: linear-gradient(90deg, #22c1c3, #4facfe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.card p {
-    color: #c3d0e0;
-    font-size: 18px;
+.info {
+    flex: 1;
     text-align: left;
+}
+
+.info h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.rol {
+    color: #8d4dff;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.descripcion {
+    color: #cfcfcf;
+    line-height: 1.7;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* ===== HABILIDADES ===== */
+.skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.skills span {
+    background: #11182d;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+/* ===== REDES ===== */
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.redes a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #11182d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+
+    transition: 0.3s;
+}
+
+.redes a:hover {
+    background: #7b2cff;
+    transform: scale(1.1);
 }
