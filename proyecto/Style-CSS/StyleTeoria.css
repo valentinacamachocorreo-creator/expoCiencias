@@ -12,6 +12,7 @@ body {
     text-align: center;
     padding-top: 80px;
     overflow-x: hidden;
+    background-attachment: fixed;
 
     background:
         radial-gradient(circle at 10% 0%, rgba(255, 120, 0, 0.25), transparent 40%),
@@ -106,11 +107,20 @@ header {
 /* ===== CARDS ===== */
 .cards {
     width: 90%;
-    margin: auto;
+    max-width: 1400px;
+
+    margin: 0 auto;
     padding: 80px 0;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns: repeat(12, 70px);
+
+    justify-content: center;
+
     gap: 25px;
+    
+    
 }
 
 #empezar {
@@ -120,12 +130,52 @@ header {
 .card {
     background: rgba(255, 255, 255, 0.04);
     padding: 35px;
-    border-radius: 18px;
+    border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.08);
+
     transition: 0.35s ease;
     cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+
+    backdrop-filter: blur(10px);
+    animation: floating 5s ease-in-out infinite;
+    backdrop-filter: blur(18px);
 }
 
+.card.large {
+    grid-column: span 7;
+    min-height: 420px;
+}
+
+.card.medium {
+    grid-column: span 5;
+    min-height: 340px;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+    width: 220px;
+    height: 220px;
+
+    background: radial-gradient(circle,
+            rgba(0, 212, 255, 0.18),
+            transparent 70%);
+
+    top: -80px;
+    right: -80px;
+
+    transition: 0.4s;
+    opacity: 0.4;
+}
+
+.card:hover::before {
+    transform: scale(1.3);
+}
 .card h2 {
     font-size: 28px;
     margin-bottom: 15px;
@@ -136,7 +186,13 @@ header {
 
 .card p {
     color: #c3d0e0;
-    font-size: 18px;
+    font-size: 17px;
+    line-height: 1.7;
+
+    
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -144,4 +200,1339 @@ header {
     border: 1px solid #34717d;
     box-shadow: 0 15px 35px rgba(0, 212, 255, 0.18);
     background: rgba(255, 255, 255, 0.07);
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.mini-visual {
+    width: 100%;
+    height: 140px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+
+    background: radial-gradient(circle,
+            rgba(0, 212, 255, 0.5),
+            transparent);
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/*TARJETA Potencial eléctrico*/
+.potential-card {
+    position: relative;
+}
+
+.text-side {
+    z-index: 2;
+}
+
+.text-side h2 {
+    font-size: 42px;
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+
+    background: linear-gradient(90deg, #22d3ee, #60a5fa);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-side p {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #d6e2f0;
+}
+
+.visual-side {
+    float: right;
+
+    width: 220px;
+    height: 220px;
+
+    transform: translateX(-10px);
+    margin-top: -200px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.core {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #00d4ff;
+
+    box-shadow:
+        0 0 20px #00d4ff,
+        0 0 60px #00d4ff;
+
+    z-index: 3;
+
+    animation: pulseCore 2s infinite;
+}
+
+.ring {
+    position: absolute;
+
+    border-radius: 50%;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+
+    animation: expand 4s infinite;
+}
+
+.ring1 {
+    width: 85px;
+    height: 85px;
+}
+
+.ring2 {
+    width: 150px;
+    height: 150px;
+
+    animation-delay: 1s;
+}
+
+.ring3 {
+    width: 210px;
+    height: 210px;
+
+    animation-delay: 2s;
+}
+
+@keyframes expand {
+
+    0% {
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
+}
+
+/*TARJETA Diferencia de potencial eléctrico.*/
+.voltage-visual {
+    position: relative;
+
+    width: 100%;
+    height: 140px;
+
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* PLACAS */
+
+.plate {
+    width: 14px;
+    height: 110px;
+
+    border-radius: 10px;
+}
+
+.positive {
+    background: #ff4d4d;
+
+    box-shadow:
+        0 0 15px #ff4d4d,
+        0 0 35px rgba(255, 77, 77, 0.5);
+}
+
+.negative {
+    background: #3b82f6;
+
+    box-shadow:
+        0 0 15px #3b82f6,
+        0 0 35px rgba(59, 130, 246, 0.5);
+}
+
+/* PARTÍCULAS */
+
+.particle {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 10px #22d3ee,
+        0 0 20px #22d3ee;
+
+    left: 40px;
+
+    animation: moveParticle 3s linear infinite;
+}
+
+.p2 {
+    top: 50px;
+    animation-delay: 1s;
+}
+
+.p3 {
+    top: 90px;
+    animation-delay: 2s;
+}
+
+.p1 {
+    top: 20px;
+}
+
+@keyframes moveParticle {
+    0% {
+        left: 40px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(100% - 40px);
+        opacity: 0;
+    }
+}
+
+/*TARJETA Campo eléctrico.*/
+.electric-card {
+    position: relative;
+}
+
+.electric-visual {
+    position: relative;
+
+    width: 100%;
+    height: 180px;
+
+    margin-top: -190px;
+    transform: translateX(120px);
+}
+
+/* CARGAS */
+
+.charge {
+    position: absolute;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+}
+
+.field-positive {
+    
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #ff4d4d;
+
+    top: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    box-shadow:
+        0 0 15px #ff4d4d,
+        0 0 35px #ff4d4d;
+
+    z-index: 100;
+}
+
+.field-negative  {
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #3b82f6;
+
+    bottom: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    box-shadow:
+        0 0 15px #3b82f6,
+        0 0 35px #3b82f6;
+
+    z-index: 100;
+}
+
+/* LÍNEAS */
+
+.field-line {
+    position: absolute;
+
+    left: 50%;
+    top: 20px;
+
+    width: 2px;
+    height: 130px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.7),
+        rgba(0,212,255,0.2)
+    );
+
+    transform-origin: top;
+}
+
+.line1 {
+    transform: translateX(-50%) rotate(-12deg);
+}
+
+.line2 {
+    transform: translateX(-50%);
+}
+
+.line3 {
+    transform: translateX(-50%) rotate(12deg);
+}
+
+/* PARTÍCULAS */
+
+.energy-dot {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 10px #22d3ee,
+        0 0 20px #22d3ee;
+
+    left: 50%;
+
+    animation: flowDown 3s linear infinite;
+}
+
+.field-dot1 {
+    animation-delay: 0s;
+}
+
+.field-dot2 {
+    animation-delay: 1s;
+}
+
+.field-dot3 {
+    animation-delay: 2s;
+}
+
+@keyframes flowDown {
+
+    0% {
+        top: 20px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 145px;
+        opacity: 0;
+    }
+}
+
+/*TARJETA Potencial de una carga puntual.*/
+
+.point-card {
+    position: relative;
+}
+
+.point-visual {
+    position: relative;
+
+    width: 240px;
+    height: 240px;
+
+    margin: 30px auto 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -270px;
+    transform: translateX(130px);
+}
+
+/* NÚCLEO */
+
+.point-core {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 20px #22d3ee,
+        0 0 50px #22d3ee;
+
+    z-index: 5;
+
+    animation: pulsePoint 2s infinite;
+}
+
+/* ONDAS */
+
+.wave {
+    position: absolute;
+
+    border-radius: 50%;
+    border: 2px solid rgba(34, 211, 238, 0.25);
+
+    animation: waveExpand 4s infinite;
+}
+
+.wave1 {
+    width: 80px;
+    height: 80px;
+}
+
+.wave2 {
+    width: 140px;
+    height: 140px;
+
+    animation-delay: 1s;
+}
+
+.wave3 {
+    width: 200px;
+    height: 200px;
+
+    animation-delay: 2s;
+}
+
+/* ÓRBITAS */
+
+.orbit {
+    position: absolute;
+
+    border-radius: 50%;
+    border-top: 3px solid rgba(255,255,255,0.8);
+
+    animation: rotateOrbit linear infinite;
+}
+
+.orbit1 {
+    width: 120px;
+    height: 120px;
+
+    animation-duration: 5s;
+}
+
+.orbit2 {
+    width: 170px;
+    height: 170px;
+
+    animation-duration: 8s;
+
+    transform: rotate(45deg);
+}
+
+/* ANIMACIONES */
+
+@keyframes waveExpand {
+
+    0% {
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
+}
+
+@keyframes rotateOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulsePoint {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/*TARJETA Superposición de campos eléctricos.*/
+.super-card {
+    position: relative;
+}
+
+.super-visual {
+    position: relative;
+
+    width: 320px;
+    height: 220px;
+
+    margin: 20px auto 0;
+    margin-top: -310px;
+    transform: translateX(130px);
+}
+
+/* CARGAS */
+
+.super-charge {
+    position: absolute;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
+.red-charge {
+    left: 70px;
+    top: 90px;
+
+    background: #ff4d4d;
+
+    box-shadow:
+        0 0 15px #ff4d4d,
+        0 0 35px rgba(255,77,77,0.5);
+}
+
+.blue-charge {
+    right: 70px;
+    top: 90px;
+
+    background: #3b82f6;
+
+    box-shadow:
+        0 0 15px #3b82f6,
+        0 0 35px rgba(59,130,246,0.5);
+}
+
+/* ONDAS */
+
+.super-wave {
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.15);
+
+    top: 45px;
+
+    animation: superPulse 4s infinite;
+}
+
+.wave-red {
+    left: 25px;
+
+    border-color: rgba(255,77,77,0.35);
+}
+
+.wave-blue {
+    right: 25px;
+
+    border-color: rgba(59,130,246,0.35);
+
+    animation-delay: 2s;
+}
+
+/* PARTÍCULAS */
+
+.mix-particle {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 10px #22d3ee,
+        0 0 20px #22d3ee;
+
+    left: 50%;
+    top: 50%;
+
+    animation: mixMove 3s infinite ease-in-out;
+}
+
+.mp2 {
+    animation-delay: 1s;
+}
+
+.mp3 {
+    animation-delay: 2s;
+}
+
+/* ANIMACIONES */
+
+@keyframes superPulse {
+
+    0%,100% {
+        transform: scale(0.95);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 0.7;
+    }
+}
+
+@keyframes mixMove {
+
+    0% {
+        transform: translate(-20px,-20px);
+    }
+
+    25% {
+        transform: translate(20px,-10px);
+    }
+
+    50% {
+        transform: translate(0px,20px);
+    }
+
+    75% {
+        transform: translate(-15px,10px);
+    }
+
+    100% {
+        transform: translate(-20px,-20px);
+    }
+}
+
+/*TARJETA energia potencial electrica.*/
+.energy-card {
+    position: relative;
+}
+
+.energy-visual {
+    position: relative;
+
+    width: 240px;
+    height: 220px;
+
+    margin: 25px auto 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -190px;
+    transform: translateX(110px);
+}
+
+/* NÚCLEO */
+
+.energy-core {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 20px #22d3ee,
+        0 0 60px #22d3ee;
+
+    z-index: 5;
+
+    animation: energyPulse 2s infinite;
+}
+
+/* ANILLOS */
+
+.energy-ring {
+    position: absolute;
+
+    border-radius: 50%;
+    border: 2px solid rgba(34,211,238,0.25);
+
+    animation: rotateEnergy linear infinite;
+}
+
+.er1 {
+    width: 120px;
+    height: 120px;
+
+    border-top: 3px solid rgba(255,255,255,0.8);
+
+    animation-duration: 6s;
+}
+
+.er2 {
+    width: 180px;
+    height: 180px;
+
+    border-right: 3px solid rgba(0,212,255,0.8);
+
+    animation-duration: 10s;
+}
+
+/* CHISPAS */
+
+.spark {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #22d3ee;
+
+    animation: sparkMove 3s infinite ease-in-out;
+}
+
+.s1 {
+    top: 20px;
+    left: 50%;
+}
+
+.s2 {
+    right: 20px;
+    top: 50%;
+}
+
+.s3 {
+    bottom: 20px;
+    left: 50%;
+}
+
+.s4 {
+    left: 20px;
+    top: 50%;
+}
+
+/* ANIMACIONES */
+
+@keyframes energyPulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes rotateEnergy {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sparkMove {
+
+    0%,100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/*TARJETA uperficie equipotencial.*/
+.equip-card {
+    position: relative;
+}
+
+.equip-visual {
+    position: relative;
+
+    width: 240px;
+    height: 180px;
+
+    margin: 20px auto 0;
+    margin-top: -200px;
+    transform: translateX(110px);
+}
+
+/* PUNTO CENTRAL */
+
+.equip-point {
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 15px #22d3ee,
+        0 0 40px #22d3ee;
+
+    z-index: 5;
+
+    animation: pulseEquip 2s infinite;
+}
+
+/* LÍNEAS EQUIPOTENCIALES */
+
+.equip-line {
+
+    position: absolute;
+
+    border: 2px solid rgba(34,211,238,0.28);
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    animation: waveEquip 4s infinite ease-in-out;
+}
+
+.l1 {
+    width: 60px;
+    height: 60px;
+}
+
+.l2 {
+    width: 110px;
+    height: 110px;
+
+    animation-delay: 0.5s;
+}
+
+.l3 {
+    width: 160px;
+    height: 160px;
+
+    animation-delay: 1s;
+}
+
+.l4 {
+    width: 210px;
+    height: 210px;
+
+    animation-delay: 1.5s;
+}
+
+/* ANIMACIONES */
+
+@keyframes pulseEquip {
+
+    0%,100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+@keyframes waveEquip {
+
+    0%,100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/*TARJETA Movimiento de cargas.*/
+/* MOVIMIENTO DE CARGAS */
+
+.movement-card {
+    position: relative;
+}
+
+.movement-visual {
+
+    position: relative;
+
+    width: 100%;
+    height: 180px;
+
+    margin-top: 25px;
+
+    overflow: hidden;
+    margin-top: -30px;
+    
+}
+
+/* LÍNEA DE MOVIMIENTO */
+
+.path-line {
+
+    position: absolute;
+
+    width: 80%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(34,211,238,0.8),
+        transparent
+    );
+
+    left: 10%;
+    top: 50%;
+
+    box-shadow: 0 0 15px #22d3ee;
+}
+
+/* CARGAS */
+
+.charge {
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    top: calc(50% - 11px);
+}
+
+/* POSITIVA */
+
+.positive {
+
+    background: #ff4d4d;
+
+    box-shadow:
+        0 0 15px #ff4d4d,
+        0 0 35px #ff4d4d;
+
+    animation: movePositive 4s linear infinite;
+}
+
+/* NEGATIVA */
+
+.negative {
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 15px #22d3ee,
+        0 0 35px #22d3ee;
+
+    animation: moveNegative 4s linear infinite;
+}
+
+/* ANIMACIONES */
+
+@keyframes movePositive {
+
+    0% {
+        left: 10%;
+    }
+
+    100% {
+        left: 82%;
+    }
+}
+
+@keyframes moveNegative {
+
+    0% {
+        left: 82%;
+    }
+
+    100% {
+        left: 10%;
+    }
+}
+
+/*TARJETA capacitancia*/
+.capacitancia-card {
+    position: relative;
+}
+
+/* VISUAL */
+
+.capacitancia-visual {
+
+    position: relative;
+
+    width: 240px;
+    height: 170px;
+
+     margin-top: -100px;
+    transform: translateX(10px);
+
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+/* PLACAS */
+
+.cap-left,
+.cap-right {
+
+    position: absolute;
+
+    width: 12px;
+    height: 110px;
+
+    top: 30px;
+
+    border-radius: 10px;
+}
+
+/* IZQUIERDA */
+
+.cap-left {
+
+    left: 40px;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 15px #22d3ee,
+        0 0 35px #22d3ee;
+}
+
+/* DERECHA */
+
+.cap-right {
+
+    right: 40px;
+
+    background: #8b5cf6;
+
+    box-shadow:
+        0 0 15px #8b5cf6,
+        0 0 35px #8b5cf6;
+}
+
+/* PARTÍCULAS */
+
+.cap-dot {
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #22d3ee;
+
+    animation: capMove 2s infinite ease-in-out;
+}
+
+/* POSICIONES */
+
+.dot1 {
+    left: 90px;
+}
+
+.dot2 {
+    left: 115px;
+    animation-delay: 0.4s;
+}
+
+.dot3 {
+    left: 140px;
+    animation-delay: 0.8s;
+}
+
+/* ANIMACIÓN */
+
+@keyframes capMove {
+
+    0%,100% {
+
+        opacity: 0.3;
+
+        transform:
+            translateY(-50%)
+            scale(0.8);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-50%)
+            scale(1.5);
+    }
+}
+
+/*TARJETA Aplicaciones del potencial eléctrico*/
+/* ===== APLICACIONES ===== */
+
+.app-card {
+    position: relative;
+}
+
+/* VISUAL */
+
+.app-visual {
+
+    position: relative;
+
+    width: 240px;
+    height: 180px;
+
+
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: -190px;
+    transform: translateX(60px);
+}
+
+/* NODOS */
+
+.app-node {
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 15px #22d3ee,
+        0 0 30px #22d3ee;
+}
+
+/* POSICIONES */
+
+.node1 {
+    top: 20px;
+    left: 30px;
+}
+
+.node2 {
+    top: 70px;
+    right: 30px;
+}
+
+.node3 {
+    bottom: 25px;
+    left: 60px;
+}
+
+.node4 {
+    bottom: 40px;
+    right: 60px;
+}
+
+/* LÍNEAS */
+
+.app-line {
+
+    position: absolute;
+
+    background: rgba(34,211,238,0.4);
+
+    box-shadow: 0 0 10px #22d3ee;
+}
+
+/* CONEXIONES */
+
+.line-a {
+
+    width: 130px;
+    height: 2px;
+
+    top: 35px;
+    left: 45px;
+
+    transform: rotate(18deg);
+}
+
+.line-b {
+
+    width: 120px;
+    height: 2px;
+
+    top: 100px;
+    left: 55px;
+
+    transform: rotate(-15deg);
+}
+
+.line-c {
+
+    width: 2px;
+    height: 90px;
+
+    top: 45px;
+    left: 115px;
+}
+
+/* PULSOS */
+
+.energy-pulse {
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #22d3ee;
+
+    animation: appFlow 2s infinite linear;
+}
+
+.pulse1 {
+    top: 40px;
+    left: 70px;
+}
+
+.pulse2 {
+    top: 105px;
+    left: 140px;
+
+    animation-delay: 1s;
+}
+
+/* ANIMACIÓN */
+
+@keyframes appFlow {
+
+    0% {
+
+        transform: scale(0.7);
+
+        opacity: 0.3;
+    }
+
+    50% {
+
+        transform: scale(1.5);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform: scale(0.7);
+
+        opacity: 0.3;
+    }
 }
