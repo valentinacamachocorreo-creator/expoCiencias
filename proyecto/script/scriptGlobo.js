@@ -86,25 +86,70 @@ function draw() {
 
     // partículas
     particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = p.q > 0 ? "#f87171" : "#60a5fa";
-        ctx.fill();
-    });
+    // círculo
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = p.q > 0 ? "#f87171" : "#60a5fa";
+    ctx.fill();
+
+    // símbolo + o -
+    ctx.fillStyle = "white";
+    ctx.font = "10px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    if (p.q > 0) {
+        ctx.fillText("+", p.x, p.y);
+    } else {
+        ctx.fillText("−", p.x, p.y);
+    }
+});
 
     // cargas fijas
     fixedCharges.forEach(c => {
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, 12, 0, Math.PI * 2);
-        ctx.fillStyle = c.q > 0 ? "red" : "blue";
-        ctx.fill();
-    });
+
+    ctx.save(); 
+
+    // círculo
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, 14, 0, Math.PI * 2);
+
+    ctx.fillStyle = c.q > 0 ? "#ef4444" : "#3b82f6";
+
+    // glow
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = c.q > 0 ? "#ef4444" : "#3b82f6";
+
+    ctx.fill();
+
+    // símbolo + o -
+    ctx.fillStyle = "white";
+    ctx.font = "14px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    if (c.q > 0) {
+        ctx.fillText("+", c.x, c.y);
+    } else {
+        ctx.fillText("−", c.x, c.y);
+    }
+
+    ctx.restore(); 
+});
 
     // globo
-    ctx.beginPath();
-    ctx.arc(balloon.x, balloon.y, 25, 0, Math.PI * 2);
-    ctx.fillStyle = balloon.charge > 0 ? "orange" : "purple";
-    ctx.fill();
+ctx.save(); 
+
+ctx.beginPath();
+ctx.arc(balloon.x, balloon.y, 25, 0, Math.PI * 2);
+
+ctx.shadowBlur = 25;
+ctx.shadowColor = balloon.charge > 0 ? "#facc15" : "#d946ef"; 
+
+ctx.fillStyle = balloon.charge > 0 ? "#f59e0b" : "#a21caf";
+ctx.fill();
+
+ctx.restore(); 
 
     // cuerda
     ctx.beginPath();
@@ -114,10 +159,17 @@ function draw() {
     ctx.stroke();
 
     // texto
-    ctx.fillStyle = "white";
-    ctx.font = "14px Arial";
-    ctx.fillText("Carga del globo: " + balloon.charge.toFixed(2), 10, 20);
-    ctx.fillText("Rojo = positivo | Azul = negativo", 10, 40);
+   ctx.shadowBlur = 0;
+    ctx.shadowColor = "transparent";
+
+// texto
+ctx.fillStyle = "white";
+ctx.font = "14px Arial";
+ctx.textAlign = "left";
+ctx.textBaseline = "top";
+
+ctx.fillText("Carga del globo: " + balloon.charge.toFixed(2), 10, 10);
+ctx.fillText("Rojo = positivo | Azul = negativo", 10, 30);
 }
 
 function loop() {

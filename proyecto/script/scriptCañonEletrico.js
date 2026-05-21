@@ -46,21 +46,48 @@ function update() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // 2. Dibujar Placas
-    ctx.fillStyle = "#ff4444"; // Placa Positiva (+)
-    ctx.fillRect(70, 80, 15, 140);
+    ctx.save();
+ctx.fillStyle = "#ff4444";
+ctx.shadowBlur = 5;
+ctx.shadowColor = "#ff4444";
+ctx.fillRect(70, 40, 15, 220);
+ctx.restore();
 
-    ctx.fillStyle = "#4444ff"; // Placa Negativa (-)
-    ctx.fillRect(250, 80, 15, 140);
+ctx.save();
+ctx.fillStyle = "#3b82f6";
+ctx.shadowBlur = 5;
+ctx.shadowColor = "#3b82f6";
+ctx.fillRect(650, 40, 15, 220);
+ctx.restore();
+
+// 🔥 símbolos + y -
+ctx.fillStyle = "white";
+ctx.font = "20px Arial";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+
+ctx.fillText("+", 77, 30);   // encima de la placa roja
+ctx.fillText("−", 657, 30);  // encima de la placa azul
+
+    
 
     // ⚡ Campo eléctrico entre placas
 ctx.strokeStyle = "rgba(0, 212, 255, 0.2)";
 ctx.lineWidth = 2;
 
-for (let y = 90; y < 210; y += 20) {
+for (let y = 60; y < 260; y += 20) {
     ctx.beginPath();
     ctx.moveTo(85, y);
-    ctx.lineTo(250, y);
+    ctx.lineTo(650, y);
     ctx.stroke();
+
+    // flechita
+    ctx.beginPath();
+    ctx.moveTo(650, y);
+    ctx.lineTo(645, y - 5);
+    ctx.lineTo(645, y + 5);
+    ctx.fillStyle = "#00d4ff";
+    ctx.fill();
 }
 
     // 3. Lógica de Física del Movimiento
@@ -68,7 +95,7 @@ for (let y = 90; y < 210; y += 20) {
         let v = parseInt(voltInput.value);
 
         // ZONA DE ACELERACIÓN: Entre placa roja (70) y azul (250)
-        if (particle.x >= 70 && particle.x <= 250) {
+        if (particle.x >= 70 && particle.x <= 650) {
             // Aceleramos la partícula proporcional al voltaje
             // Dividimos por 100 para que no sea tan brusco
             let aceleracion = v / 200;

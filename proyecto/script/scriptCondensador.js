@@ -13,7 +13,11 @@ const uVal = document.getElementById('uVal');
 canvas.width = 700;
 canvas.height = 450;
 
+let offset = 0;
+
 function draw() {
+
+    offset += 0.5;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -41,34 +45,55 @@ function draw() {
     const centerY = canvas.height / 2;
 
     // Placa superior
-    ctx.fillStyle = "#ef4444";
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "#ef4444";
-    ctx.fillRect(centerX - a / 2, centerY - d / 2, a, 10);
+// placa superior (+)
+ctx.save();
+ctx.fillStyle = "#ef4444";
+ctx.shadowBlur = 25;
+ctx.shadowColor = "#ef4444";
+ctx.fillRect(centerX - a / 2, centerY - d / 2, a, 12);
+ctx.restore();
 
-    // Placa inferior
-    ctx.fillStyle = "#3b82f6";
-    ctx.shadowColor = "#3b82f6";
-    ctx.fillRect(centerX - a / 2, centerY + d / 2, a, 10);
-
+// placa inferior (-)
+ctx.save();
+ctx.fillStyle = "#3b82f6";
+ctx.shadowBlur = 25;
+ctx.shadowColor = "#3b82f6";
+ctx.fillRect(centerX - a / 2, centerY + d / 2, a, 12);
+ctx.restore();
     ctx.shadowBlur = 0;
+
+    ctx.fillStyle = "white";
+ctx.font = "18px Arial";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+
+ctx.fillText("+", centerX, centerY - d / 2 - 15);
+ctx.fillText("−", centerX, centerY + d / 2 + 20);
 
     // Campo eléctrico
     ctx.strokeStyle = "rgba(0, 212, 255, 0.4)";
     ctx.lineWidth = 2;
 
     for (let x = centerX - a / 2 + 10; x < centerX + a / 2; x += 20) {
-        ctx.beginPath();
-        ctx.moveTo(x, centerY - d / 2 + 10);
-        ctx.lineTo(x, centerY + d / 2);
-        ctx.stroke();
 
-        ctx.beginPath();
-        ctx.moveTo(x - 3, centerY + d / 2 - 5);
-        ctx.lineTo(x, centerY + d / 2);
-        ctx.lineTo(x + 3, centerY + d / 2 - 5);
-        ctx.stroke();
-    }
+    let y1 = centerY - d / 2 + 10 + (offset % 20);
+    let y2 = centerY + d / 2 - 5 + (offset % 20);
+
+    ctx.beginPath();
+    ctx.moveTo(x, y1);
+    ctx.lineTo(x, y2);
+    ctx.stroke();
+}
+
+for (let i = 0; i < 20; i++) {
+    let x = centerX - a / 2 + Math.random() * a;
+    let y = centerY - d / 2 + Math.random() * d;
+
+    ctx.beginPath();
+    ctx.arc(x, y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0, 212, 255, 0.3)";
+    ctx.fill();
+}
 
     requestAnimationFrame(draw);
 }
