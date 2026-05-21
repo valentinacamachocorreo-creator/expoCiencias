@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador: Acelerador de Partículas</title>
+    <link rel="stylesheet" href="/proyecto/Style-CSS/StyleSim.css">
+</head>
+
+<body id="cañon">
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+   <img src="/proyecto/img/logoUnia.png.png" class="logo-uni" alt="logo universidad">
+    <span>voltspace</span>
+    </div>
+        <div class="nav-center">
+        <a href="../home/experimentos.html" class="btn-back">
+          ← Volver a experimentos
+         </a>
+        </div>
+      <div class="expo">
+        <img src="/proyecto/img/logoExpoCiencias.png.png" alt="expo ciencias">
+    </div>
+    </nav>
+  </header>
+    <div class="interface-container">
+        <h1>Acelerador de Partículas Eléctricas</h1>
+        <div class="control-panel">
+  <div class="control-group">
+    <p class="sim-description">
+      <strong class="text-cyan">Acelerador de partículas:</strong><br>
+      Ajusta el voltaje para aumentar la energía de la partícula cargada.
+      Observa cómo se acelera al pasar entre placas con diferencia de potencial.
+    </p>
+  </div>
+
+  <div class="control-group">
+    <label>Voltaje: <span id="vDisplay">100</span> V</label>
+    <input type="range" id="volts" min="10" max="200" value="100">
+  </div>
+
+  <div class="control-group">
+    <button id="btnLaunch">Disparar</button>
+    <button id="btnReset">Reset</button>
+  </div>
+</div>
+        <canvas id="canvasAcelerador"></canvas>
+        <div class="stats-display">
+    <div class="stat-item">
+        <span class="stat-label">Estado</span>
+        <span id="status" class="stat-value">Listo</span>
+    </div>
+
+    <div class="stat-item">
+        <span class="stat-label">Energía</span>
+        <span id="energy" class="stat-value">0 eV</span>
+    </div>
+</div>
+    </div>
+
+    <script src="/proyecto/script/scriptCañonEletrico.js"></script>
+</body>
+
+</html>

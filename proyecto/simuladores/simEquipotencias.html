@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Potencial Eléctrico</title>
+    <link rel="stylesheet" href="/proyecto/Style-CSS/StyleSim.css">
+</head>
+
+<body>
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+   <img src="/proyecto/img/logoUnia.png.png" class="logo-uni" alt="logo universidad">
+    <span>voltspace</span>
+    </div>
+        <div class="nav-center">
+        <a href="../home/experimentos.html" class="btn-back">
+          ← Volver a experimentos
+         </a>
+        </div>
+      <div class="expo">
+        <img src="/proyecto/img/logoExpoCiencias.png.png" alt="expo ciencias">
+    </div>
+    </nav>
+  </header>
+    <div class="interface-container">
+    <h1>Mapa de Potencial Eléctrico</h1>
+
+    <!-- 🔹 TEXTO + BOTÓN ARRIBA -->
+    <div class="control-panel">
+      <div class="control-group">
+        <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">
+          <strong style="color: #00d4ff;">Mapa de potencial eléctrico:</strong><br>
+          Coloca cargas positivas <strong>[Click]</strong> o negativas <strong>[shift + click]</strong> para visualizar cómo se distribuye el potencial eléctrico en el espacio.
+          Las zonas rojas representan potencial positivo y las azules potencial negativo.
+        </p>
+      </div>
+
+      <div class="control-group">
+        <button onclick="clearCanvas()">LIMPIAR MAPA</button>
+      </div>
+    </div>
+
+    <!-- 🔹 CANVAS EN EL CENTRO -->
+    <canvas id="canvasPotencial"></canvas>
+
+    <!-- 🔹 STATS ABAJO -->
+    <div class="stats-display">
+
+      <div class="stat-item">
+        <span class="stat-label">Cargas</span>
+        <span id="numCargas" class="stat-value">0</span>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-label">Potencial</span>
+        <span id="infoPotencial" class="stat-value">0 V</span>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-label">Visualización</span>
+        <span class="stat-value">Campo Escalar</span>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-label">Precisión</span>
+        <span class="stat-value">Alta</span>
+      </div>
+
+    </div>
+</div>
+
+    <script src="/proyecto/script/scriptEquipotencial.js"></script>
+</body>
+
+</html>

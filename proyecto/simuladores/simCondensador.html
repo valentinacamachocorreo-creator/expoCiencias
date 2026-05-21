@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador: Condensador Eléctrico</title>
+    <link rel="stylesheet" href="/proyecto/Style-CSS/StyleSim.css">
+</head>
+
+<body id="Condensador">
+    <header>
+    <nav class="navbar">
+      <div class="logo">
+   <img src="/proyecto/img/logoUnia.png.png" class="logo-uni" alt="logo universidad">
+    <span>voltspace</span>
+    </div>
+        <div class="nav-center">
+        <a href="../home/experimentos.html" class="btn-back">
+          ← Volver a experimentos
+         </a>
+        </div>
+      <div class="expo">
+        <img src="/proyecto/img/logoExpoCiencias.png.png" alt="expo ciencias">
+    </div>
+    </nav>
+  </header>
+    <div class="interface-container">
+    <h1>Condensador de Placas</h1>
+    <div class="control-panel">
+  <div class="control-group">
+    <p class="explicacion">
+      <strong>Condensador de placas paralelas:</strong><br>
+      Ajusta la distancia entre placas y el área para observar cómo cambia 
+      la capacitancia y la energía almacenada en el sistema.
+    </p>
+  </div>
+
+  <div class="control-group sliders">
+    <label>Distancia (d): <span id="dVal">0</span></label>
+    <input type="range" id="distRange" min="30" max="150" value="80">
+    
+    <label>Área (A): <span id="aVal">0</span></label>
+    <input type="range" id="areaRange" min="50" max="250" value="120">
+   </div>
+</div>
+    <canvas id="capCanvas"></canvas>
+
+    
+
+    <div class="stats-display">
+  <div class="stat-item">
+    <span class="stat-label">Capacitancia</span>
+    <span id="cVal" class="stat-value">0</span> pF
+  </div>
+
+  <div class="stat-item">
+    <span class="stat-label">Energía</span>
+    <span id="uVal" class="stat-value">0</span> J
+  </div>
+</div>
+</div>
+    <script src="/proyecto/script/scriptCondensador.js"></script>
+</body>
+
+</html>
